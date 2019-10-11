@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  {% block body %}
+    <h1>Hi! {{ name }}, here are the top destinations!!</h1>
+    <a href="https://www.google.com/">goooogle</a>
+    <!-- <ul><li>{{top1}}</li></ul>
+    <ul><li>{{top2}}</li></ul>
+    <ul><li>{{top3}}</li></ul>
+    <ul><li>{{top4}}</li></ul> -->
+
+
+    <!-- <p id="TopCities"></p>
+      <script>
+        var top_cities = [
+          ' Paris',
+          ' London',
+          ' Rome',
+          ' Tahiti']
+        var text = "";
+        var i;
+        for (i = 0; i<top_cities.length; i++){
+          text += top_cities[i] + "<br>";
+        }
+        document.getElementById("TopCities").innerHTML = text ;
+      </script> -->
+<ul>
+  {% for city in top_cities %}
+  <li>{{ city }}</li>
+  {% endfor %}
+</ul>
+
+<!-- <h4>City Name <input name="text"></h4>
+<h4>City Rank <input name="text"></h4>
+<p>Visited<input type="checkbox" name="Visited"/></p>
+<p>Submit <input type="submit" name ="Submit"></p> -->
+
+<!-- <form action="/html/tags/html_form_tag_action.cfm" method="post">
+<textarea name="comments" id="comments" style="width:96%;height:90px;padding:2%;font:1.4em/1.6em cursive;">
+Hey... say something!
+</textarea>
+<input type="submit" value="Submit" style="font-size: 14px;border:5px solid orange;background-color:gold;color:olive;">
+</form> -->
+
+   <form>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.city_name.label }}
+            {{ form.city_name(size=30) }}
+        </p>
+        <p>
+            {{ form.city_rank.label }}
+            {{ form.city_rank(size=22) }}
+        </p>
+        <p> {{ form.is_visited.label }} {{ form.is_visited() }} </p>
+        <p><strong>Submit</strong> {{ form.submit() }}</p>
+        <p>
+            {{ form.comments.label }}<br>
+            {{ form.comments(size=30) }}
+        </p>
+    </form>
+  {% endblock %}
+</body>
+</html>
